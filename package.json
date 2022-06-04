@@ -2,6 +2,10 @@
   "name": "site-coletivo-unicas-backend",
   "version": "1.0.0",
   "description": "",
+  "engines": {
+    "node": "14.16.1",
+    "npm": "6.14.12"
+  },
   "main": "src/main.ts",
   "scripts": {
     "lint": "eslint ./src --ext .ts",
