@@ -25,5 +25,5 @@ class Main {
     }
 }
 
-// new Main().init()
-new Main().initDev()
+new Main().init()
+//new Main().initDev()
