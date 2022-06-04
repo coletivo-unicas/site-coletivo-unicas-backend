@@ -1,5 +1,5 @@
 {
-  "name": "tatodesk-support-api",
+  "name": "site-coletivo-unicas-backend",
   "version": "1.0.0",
   "description": "",
   "main": "src/main.ts",
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://gitteste.gsan.com.br/gerencia.configuracao/tatodesk-support-api.git"
+    "url": "https://github.com/coletivo-unicas/site-coletivo-unicas-backend.git"
   },
   "keywords": [],
   "author": "",
