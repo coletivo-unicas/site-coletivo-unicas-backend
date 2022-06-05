@@ -1,6 +1,6 @@
 import { CmdGraphql } from './delivery/api/graphql/cmd/server'
 
-const GRAPHQL = 'coletivo-unicas-site-api'
+const GRAPHQL = 'site-coletivo-unicas-backend'
 
 class Main {
     public initDev(): void {

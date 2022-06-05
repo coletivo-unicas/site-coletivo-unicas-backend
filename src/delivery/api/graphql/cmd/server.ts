@@ -29,7 +29,7 @@ class CmdGraphql {
         const server = http.createServer(this.app)
 
         server.listen(PORT, () => {
-            console.log(`coletivo-unicas-site-api is Running... at port ${PORT}`)
+            console.log(`site-coletivo-unicas-backend is Running... at port ${PORT}`)
         })
     }
 }
