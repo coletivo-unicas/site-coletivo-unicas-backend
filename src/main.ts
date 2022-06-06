@@ -1,10 +1,13 @@
 import { CmdGraphql } from './delivery/api/graphql/cmd/server'
+import { CmdRest } from './delivery/api/rest/cmd/cmd'
 
 const GRAPHQL = 'site-coletivo-unicas-backend'
+const REST = 'site-coletivo-unicas-backend-rest-api'
 
 class Main {
     public initDev(): void {
         new CmdGraphql().server()
+        new CmdRest().server()
     }
 
     public init(): void {
@@ -12,6 +15,8 @@ class Main {
             if (process.env.SERVER == GRAPHQL) {
                 new CmdGraphql().server()
             }
+        } else if (process.env.SERVER == REST) {
+            new CmdRest().server()
         }
     }
 
