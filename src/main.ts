@@ -14,9 +14,9 @@ class Main {
         if (this.checkEnvVar()) {
             if (process.env.SERVER == GRAPHQL) {
                 new CmdGraphql().server()
+            } else if (process.env.SERVER == REST) {
+                new CmdRest().server()
             }
-        } else if (process.env.SERVER == REST) {
-            new CmdRest().server()
         }
     }
 
