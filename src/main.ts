@@ -7,7 +7,6 @@ const REST = 'site-coletivo-unicas-backend-rest-api'
 class Main {
     public initDev(): void {
         new CmdGraphql().server()
-        new CmdRest().server()
     }
 
     public init(): void {
@@ -30,5 +29,5 @@ class Main {
     }
 }
 
-new Main().init()
-//new Main().initDev()
+//new Main().init()
+new Main().initDev()

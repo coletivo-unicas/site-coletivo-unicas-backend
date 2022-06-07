@@ -9,7 +9,6 @@ var Main = /** @class */ (function () {
     }
     Main.prototype.initDev = function () {
         new server_1.CmdGraphql().server();
-        new cmd_1.CmdRest().server();
     };
     Main.prototype.init = function () {
         if (this.checkEnvVar()) {
@@ -30,5 +29,5 @@ var Main = /** @class */ (function () {
     };
     return Main;
 }());
-new Main().init();
-//new Main().initDev()
+//new Main().init()
+new Main().initDev();
