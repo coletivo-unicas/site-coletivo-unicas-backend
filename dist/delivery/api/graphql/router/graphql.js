@@ -9,7 +9,7 @@ var GraphqlRouter = /** @class */ (function () {
         this.router = (0, express_1.Router)();
         this.router.use('/graphql', (0, express_graphql_1.graphqlHTTP)({
             schema: schema_1.schema,
-            graphiql: true,
+            graphiql: false,
             customFormatErrorFn: function (error) {
                 return { message: error.message };
             }

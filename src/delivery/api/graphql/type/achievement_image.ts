@@ -1,5 +1,4 @@
-import { GraphQLInt, GraphQLList, GraphQLObjectType, GraphQLString } from "graphql"
-import { errorType } from "./error"
+import { GraphQLInt, GraphQLObjectType, GraphQLString } from "graphql"
 
 const achievementImageType = new GraphQLObjectType({
     name: 'achievmentImageType',
@@ -10,15 +9,6 @@ const achievementImageType = new GraphQLObjectType({
     }
 })
 
-const listAchievementImagesByAchievementIDResponseType = new GraphQLObjectType({
-    name: 'listAchievementImagesByAchievementIDResponseType',
-    fields: {
-        achievementImages: { type: new GraphQLList(achievementImageType) },
-        error: { type: errorType }
-    }
-})
-
 export {
-    achievementImageType,
-    listAchievementImagesByAchievementIDResponseType
+    achievementImageType
 }

@@ -1,8 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.listAchievementImagesByAchievementIDResponseType = exports.achievementImageType = void 0;
+exports.achievementImageType = void 0;
 var graphql_1 = require("graphql");
-var error_1 = require("./error");
 var achievementImageType = new graphql_1.GraphQLObjectType({
     name: 'achievmentImageType',
     fields: {
@@ -12,11 +11,3 @@ var achievementImageType = new graphql_1.GraphQLObjectType({
     }
 });
 exports.achievementImageType = achievementImageType;
-var listAchievementImagesByAchievementIDResponseType = new graphql_1.GraphQLObjectType({
-    name: 'listAchievementImagesByAchievementIDResponseType',
-    fields: {
-        achievementImages: { type: new graphql_1.GraphQLList(achievementImageType) },
-        error: { type: error_1.errorType }
-    }
-});
-exports.listAchievementImagesByAchievementIDResponseType = listAchievementImagesByAchievementIDResponseType;

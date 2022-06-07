@@ -1,5 +1,5 @@
 const envPort = process.env.PORT
-let PORT = 8062
+let PORT = 3000
 
 if (envPort) {
     PORT = parseInt(envPort, 10) 

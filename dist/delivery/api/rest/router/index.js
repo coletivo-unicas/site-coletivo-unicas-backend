@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Router = void 0;
+var achievement_1 = require("./achievement");
 var cors_1 = require("./cors");
 var event_1 = require("./event");
 var Router = /** @class */ (function () {
@@ -9,6 +10,7 @@ var Router = /** @class */ (function () {
         app.get('/', function (req, res) { return res.status(204); });
         app.use(new cors_1.CorsRouter().getRouter());
         app.use(new event_1.EventRouter().getRouter());
+        app.use(new achievement_1.AchievementRouter().getRouter());
     }
     return Router;
 }());
