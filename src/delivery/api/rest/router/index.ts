@@ -9,7 +9,7 @@ import { ProjectRouter } from './project'
 class Router {
 	constructor(app: express.Router) {
 		app.get('/favicon.ico', (req, res) => res.status(204))
-		app.get('/', (req, res) => res.status(204))
+		app.get('/', (req, res) => res.send("Hello World!"))
 		app.use(new CorsRouter().getRouter())
 		app.use(new EventRouter().getRouter())
 		app.use(new AchievementRouter().getRouter())

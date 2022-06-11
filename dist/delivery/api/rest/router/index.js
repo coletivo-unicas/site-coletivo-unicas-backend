@@ -10,7 +10,7 @@ var project_1 = require("./project");
 var Router = /** @class */ (function () {
     function Router(app) {
         app.get('/favicon.ico', function (req, res) { return res.status(204); });
-        app.get('/', function (req, res) { return res.status(204); });
+        app.get('/', function (req, res) { return res.send("Hello World!"); });
         app.use(new cors_1.CorsRouter().getRouter());
         app.use(new event_1.EventRouter().getRouter());
         app.use(new achievement_1.AchievementRouter().getRouter());
