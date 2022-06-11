@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var server_1 = require("./delivery/api/graphql/cmd/server");
+var cmd_1 = require("./delivery/api/rest/cmd/cmd");
 var Main = /** @class */ (function () {
     function Main() {
     }
     Main.prototype.init = function () {
-        new server_1.CmdGraphql().server();
+        new cmd_1.CmdRest().server();
     };
     return Main;
 }());

@@ -38,27 +38,43 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ListProductsUseCase = void 0;
 var error_1 = require("../entity/error");
-var product_1 = require("./ucio/product");
+var product_1 = require("../entity/product");
+var product_2 = require("./ucio/product");
 var ListProductsUseCase = /** @class */ (function () {
     function ListProductsUseCase(repository) {
         this.repository = repository;
     }
     ListProductsUseCase.prototype.listProducts = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var data, error_2;
+            var productList, data, _i, productList_1, product, member, responseEntity, error_2;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        _a.trys.push([0, 2, , 3]);
+                        _a.trys.push([0, 6, , 7]);
                         return [4 /*yield*/, this.repository.listProducts()];
                     case 1:
-                        data = _a.sent();
-                        return [2 /*return*/, new product_1.ListProductsUseCaseResponse(data, null)];
+                        productList = _a.sent();
+                        data = [];
+                        _i = 0, productList_1 = productList;
+                        _a.label = 2;
                     case 2:
+                        if (!(_i < productList_1.length)) return [3 /*break*/, 5];
+                        product = productList_1[_i];
+                        return [4 /*yield*/, this.repository.getMember(product.memberID)];
+                    case 3:
+                        member = _a.sent();
+                        responseEntity = new product_1.ProductResponseEntity(product.ID, product.title, product.image1, product.image2, product.image3, product.price, product.category, product.size, product.available, product.description, product.color, member);
+                        data.push(responseEntity);
+                        _a.label = 4;
+                    case 4:
+                        _i++;
+                        return [3 /*break*/, 2];
+                    case 5: return [2 /*return*/, new product_2.ListProductsUseCaseResponse(data, null)];
+                    case 6:
                         error_2 = _a.sent();
                         console.log(error_1.TAG_INTERNAL_SERVER_ERROR, error_2.message);
-                        return [2 /*return*/, new product_1.ListProductsUseCaseResponse(null, new error_1.InternalServerError(error_2.message))];
-                    case 3: return [2 /*return*/];
+                        return [2 /*return*/, new product_2.ListProductsUseCaseResponse(null, new error_1.InternalServerError(error_2.message))];
+                    case 7: return [2 /*return*/];
                 }
             });
         });

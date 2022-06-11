@@ -11,7 +11,7 @@ class GraphqlRouter {
 
         this.router.use('/graphql', graphqlHTTP({
             schema: schema,
-            graphiql: false,
+            graphiql: true,
             customFormatErrorFn: (error) => {
                 return { message: error.message }
             }

@@ -36,49 +36,35 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ListAchievementsUseCase = void 0;
-var achievement_1 = require("../entity/achievement");
-var error_1 = require("../entity/error");
-var achievement_2 = require("./ucio/achievement");
-var ListAchievementsUseCase = /** @class */ (function () {
-    function ListAchievementsUseCase(repository) {
-        this.repository = repository;
+exports.ListMembersController = void 0;
+var member_1 = require("../../../../domain/usecase/member");
+var member_2 = require("../../../../infrastructure/provider/repository/member");
+var response_1 = require("../response/response");
+var ListMembersController = /** @class */ (function () {
+    function ListMembersController() {
     }
-    ListAchievementsUseCase.prototype.listAchievements = function () {
+    ListMembersController.prototype.listMembers = function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var achievements, data, _i, achievements_1, achievement, images, entity, error_2;
+            var repository, usecase, ucRes;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        _a.trys.push([0, 6, , 7]);
-                        return [4 /*yield*/, this.repository.listAchievements()];
+                        repository = new member_2.ListMembersUseCaseRepository();
+                        usecase = new member_1.ListMembersUseCase(repository);
+                        return [4 /*yield*/, usecase.listMembers()];
                     case 1:
-                        achievements = _a.sent();
-                        data = [];
-                        _i = 0, achievements_1 = achievements;
-                        _a.label = 2;
-                    case 2:
-                        if (!(_i < achievements_1.length)) return [3 /*break*/, 5];
-                        achievement = achievements_1[_i];
-                        return [4 /*yield*/, this.repository.listAchievementImagesByAchievementID(achievement.ID)];
-                    case 3:
-                        images = _a.sent();
-                        entity = new achievement_1.AchievementResponseEntity(achievement, images);
-                        data.push(entity);
-                        _a.label = 4;
-                    case 4:
-                        _i++;
-                        return [3 /*break*/, 2];
-                    case 5: return [2 /*return*/, new achievement_2.ListAchievementsUseCaseResponse(data, null)];
-                    case 6:
-                        error_2 = _a.sent();
-                        console.log(error_1.TAG_INTERNAL_SERVER_ERROR, error_2.message);
-                        return [2 /*return*/, new achievement_2.ListAchievementsUseCaseResponse(null, new error_1.InternalServerError(error_2.message))];
-                    case 7: return [2 /*return*/];
+                        ucRes = _a.sent();
+                        if (ucRes.error) {
+                            new response_1.InternalServerErrorResponse().internalServerError(res, ucRes.error);
+                        }
+                        else {
+                            new response_1.SuccessResponse().success(res, ucRes.members);
+                        }
+                        return [2 /*return*/];
                 }
             });
         });
     };
-    return ListAchievementsUseCase;
+    return ListMembersController;
 }());
-exports.ListAchievementsUseCase = ListAchievementsUseCase;
+exports.ListMembersController = ListMembersController;

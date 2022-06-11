@@ -50,6 +50,7 @@ const achievementImageModelSequelize = sequelize.define<AchievementImageInterfac
     })
 
 export {
+    AchievementImageInterface,
     AchievementImageModel,
     achievementImageModelSequelize
 }

@@ -1,3 +1,5 @@
+import { AchievementImageEntity } from "./achievement_image"
+
 class AchievementEntity {
     public ID: number
     public type: string
@@ -31,6 +33,17 @@ class AchievementEntity {
     }
 }
 
+class AchievementResponseEntity {
+    public achievement: AchievementEntity
+    public images: AchievementImageEntity[]
+
+    constructor(achievement: AchievementEntity, images: AchievementImageEntity[]) {
+        this.achievement = achievement
+        this.images = images
+    }
+}
+
 export {
-    AchievementEntity
+    AchievementEntity,
+    AchievementResponseEntity
 }

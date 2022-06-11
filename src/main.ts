@@ -1,8 +1,8 @@
-import { CmdGraphql } from './delivery/api/graphql/cmd/server'
+import { CmdRest } from './delivery/api/rest/cmd/cmd'
 
 class Main {
     public init(): void {
-        new CmdGraphql().server()
+        new CmdRest().server()
     }
 }
 

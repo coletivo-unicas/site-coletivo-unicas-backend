@@ -1,4 +1,4 @@
-const PORT = parseInt(process.env.PORT || '8068', 10)
+const PORT = parseInt(process.env.PORT || '3000', 10)
 
 export {
     PORT

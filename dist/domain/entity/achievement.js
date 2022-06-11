@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AchievementEntity = void 0;
+exports.AchievementResponseEntity = exports.AchievementEntity = void 0;
 var AchievementEntity = /** @class */ (function () {
     function AchievementEntity(ID, type, dateTimeStart, dateTimeEnd, modality, registration, learnMore, contributors, status, description, memberID, projectID, eventID) {
         this.ID = ID;
@@ -20,3 +20,11 @@ var AchievementEntity = /** @class */ (function () {
     return AchievementEntity;
 }());
 exports.AchievementEntity = AchievementEntity;
+var AchievementResponseEntity = /** @class */ (function () {
+    function AchievementResponseEntity(achievement, images) {
+        this.achievement = achievement;
+        this.images = images;
+    }
+    return AchievementResponseEntity;
+}());
+exports.AchievementResponseEntity = AchievementResponseEntity;
