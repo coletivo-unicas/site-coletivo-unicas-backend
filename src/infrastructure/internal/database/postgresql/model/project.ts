@@ -9,12 +9,12 @@ interface ProjectInterface extends Model {
 }
 
 class ProjectModel {
-    public ID: number | null
+    public ID: number
     public title: string
     public location: string
     public donation: string
 
-    constructor(ID: number | null, title: string, location: string, donation: string) {
+    constructor(ID: number, title: string, location: string, donation: string) {
         this.ID = ID
         this.title = title
         this.location = location

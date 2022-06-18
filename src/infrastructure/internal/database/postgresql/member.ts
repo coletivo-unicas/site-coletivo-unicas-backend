@@ -3,7 +3,7 @@ import { memberModelSequelize } from "./model/member"
 import { toMemberEntity } from "./transformer/member"
 
 async function listMembers(): Promise<MemberEntity[]> {
-    const response = await memberModelSequelize.findAll({ raw: true })
+    const response = await memberModelSequelize.findAll({ raw: true, order: [['name', 'ASC']] })
     return response.map(el => toMemberEntity(el))
 }
 

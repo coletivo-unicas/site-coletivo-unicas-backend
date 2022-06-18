@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ProjectEntity = void 0;
+exports.ProjectResponseEntity = exports.ProjectEntity = void 0;
 var ProjectEntity = /** @class */ (function () {
     function ProjectEntity(ID, title, location, donation) {
         this.ID = ID;
@@ -11,3 +11,11 @@ var ProjectEntity = /** @class */ (function () {
     return ProjectEntity;
 }());
 exports.ProjectEntity = ProjectEntity;
+var ProjectResponseEntity = /** @class */ (function () {
+    function ProjectResponseEntity(project, achievements) {
+        this.project = project;
+        this.achievements = achievements;
+    }
+    return ProjectResponseEntity;
+}());
+exports.ProjectResponseEntity = ProjectResponseEntity;

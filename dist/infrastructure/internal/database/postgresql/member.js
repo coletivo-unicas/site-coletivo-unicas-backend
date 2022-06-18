@@ -44,7 +44,7 @@ function listMembers() {
         var response;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, member_1.memberModelSequelize.findAll({ raw: true })];
+                case 0: return [4 /*yield*/, member_1.memberModelSequelize.findAll({ raw: true, order: [['name', 'ASC']] })];
                 case 1:
                     response = _a.sent();
                     return [2 /*return*/, response.map(function (el) { return (0, member_2.toMemberEntity)(el); })];

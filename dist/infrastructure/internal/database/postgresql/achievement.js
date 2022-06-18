@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.listAchievements = exports.getAchievement = void 0;
+exports.listAchievementsByProjectID = exports.listAchievements = exports.getAchievement = void 0;
 var achievement_1 = require("./model/achievement");
 var achievement_2 = require("./transformer/achievement");
 function getAchievement(ID) {
@@ -67,3 +67,17 @@ function listAchievements() {
     });
 }
 exports.listAchievements = listAchievements;
+function listAchievementsByProjectID(projectID) {
+    return __awaiter(this, void 0, void 0, function () {
+        var response;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, achievement_1.achievementModelSequelize.findAll({ where: { projectID: projectID }, raw: true })];
+                case 1:
+                    response = _a.sent();
+                    return [2 /*return*/, response.map(function (el) { return (0, achievement_2.toAchievementEntity)(el); })];
+            }
+        });
+    });
+}
+exports.listAchievementsByProjectID = listAchievementsByProjectID;

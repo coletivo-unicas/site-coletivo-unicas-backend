@@ -12,7 +12,13 @@ async function listAchievements(): Promise<AchievementEntity[]> {
     return response.map(el => toAchievementEntity(el))
 }
 
+async function listAchievementsByProjectID(projectID: number): Promise<AchievementEntity[]> {
+    const response = await achievementModelSequelize.findAll({ where: { projectID }, raw: true })
+    return response.map(el => toAchievementEntity(el))
+}
+
 export {
     getAchievement,
-    listAchievements
+    listAchievements,
+    listAchievementsByProjectID
 }
