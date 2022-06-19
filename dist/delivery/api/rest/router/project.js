@@ -7,6 +7,7 @@ var ProjectRouter = /** @class */ (function () {
     function ProjectRouter() {
         this.router = (0, express_1.Router)();
         this.router.get('/projects', new project_1.ListProjectsController().listProjects);
+        this.router.get('/project/:ID', new project_1.GetProjectController().getProject);
     }
     ProjectRouter.prototype.getRouter = function () {
         return this.router;

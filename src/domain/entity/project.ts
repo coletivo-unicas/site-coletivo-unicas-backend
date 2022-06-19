@@ -1,4 +1,4 @@
-import { AchievementResponseEntity } from "./achievement"
+import { AchievementImageEntity } from "./achievement_image"
 
 class ProjectEntity {
     public ID: number
@@ -14,17 +14,23 @@ class ProjectEntity {
     }
 }
 
-class ProjectResponseEntity {
-    public project: ProjectEntity
-    public achievements: AchievementResponseEntity[]
+class ProjectWithImagesEntity {
+    public ID: number
+    public title: string
+    public location: string
+    public donation: string
+    public images: AchievementImageEntity[]
 
-    constructor(project: ProjectEntity, achievements: AchievementResponseEntity[]) {
-        this.project = project
-        this.achievements = achievements
+    constructor(ID: number, title: string, location: string, donation: string, images: AchievementImageEntity[]) {
+        this.ID = ID
+        this.title = title
+        this.location = location
+        this.donation = donation
+        this.images = images
     }
 }
 
 export {
     ProjectEntity,
-    ProjectResponseEntity
+    ProjectWithImagesEntity
 }

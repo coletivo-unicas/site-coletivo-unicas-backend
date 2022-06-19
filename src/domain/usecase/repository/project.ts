@@ -10,6 +10,15 @@ interface ListProjectsUseCaseRepositoryInterface {
     listAchievementImagesByAchievementID(achievementID: number): Promise<AchievementImageEntity[]>
 }
 
+interface GetProjectUseCaseRepositoryInterface {
+    getProject(ID: number): Promise<ProjectEntity | null>
+
+    listAchievementsByProjectID(projectID: number): Promise<AchievementEntity[]>
+
+    listAchievementImagesByAchievementID(achievementID: number): Promise<AchievementImageEntity[]>
+}
+
 export {
-    ListProjectsUseCaseRepositoryInterface
+    ListProjectsUseCaseRepositoryInterface,
+    GetProjectUseCaseRepositoryInterface
 }

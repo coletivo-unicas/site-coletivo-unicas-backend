@@ -36,34 +36,28 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getProject = exports.listProjects = void 0;
-var project_1 = require("./model/project");
-var project_2 = require("./transformer/project");
-function getProject(ID) {
-    return __awaiter(this, void 0, void 0, function () {
-        var response;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, project_1.projectModelSequelize.findByPk(ID, { raw: true })];
-                case 1:
-                    response = _a.sent();
-                    return [2 /*return*/, response ? (0, project_2.toProjectEntity)(response) : null];
-            }
+exports.GetProjectUseCaseValidate = void 0;
+var project_1 = require("../../internal/database/postgresql/project");
+var validate_1 = require("./validate");
+var GetProjectUseCaseValidate = /** @class */ (function () {
+    function GetProjectUseCaseValidate() {
+    }
+    GetProjectUseCaseValidate.prototype.getProject = function (ID) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if ((0, validate_1.checkNumberEmpty)(ID))
+                            return [2 /*return*/, 'O ID não pode ficar vazio.'];
+                        return [4 /*yield*/, (0, project_1.getProject)(ID)];
+                    case 1:
+                        if (!(_a.sent()))
+                            return [2 /*return*/, 'Não existe projeto com o ID informado.'];
+                        return [2 /*return*/, null];
+                }
+            });
         });
-    });
-}
-exports.getProject = getProject;
-function listProjects() {
-    return __awaiter(this, void 0, void 0, function () {
-        var response;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, project_1.projectModelSequelize.findAll({ raw: true })];
-                case 1:
-                    response = _a.sent();
-                    return [2 /*return*/, response.map(function (el) { return (0, project_2.toProjectEntity)(el); })];
-            }
-        });
-    });
-}
-exports.listProjects = listProjects;
+    };
+    return GetProjectUseCaseValidate;
+}());
+exports.GetProjectUseCaseValidate = GetProjectUseCaseValidate;

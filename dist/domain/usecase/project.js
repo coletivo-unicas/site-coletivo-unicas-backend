@@ -36,8 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ListProjectsUseCase = void 0;
-var achievement_1 = require("../entity/achievement");
+exports.GetProjectUseCase = exports.ListProjectsUseCase = void 0;
 var error_1 = require("../entity/error");
 var project_1 = require("../entity/project");
 var project_2 = require("./ucio/project");
@@ -47,49 +46,61 @@ var ListProjectsUseCase = /** @class */ (function () {
     }
     ListProjectsUseCase.prototype.listProjects = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var projects, data, _i, projects_1, project, achievements, achievementResponse, _a, achievements_1, achievement, images, error_2;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var projects, data, _loop_1, this_1, _i, projects_1, project, error_2;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
                     case 0:
-                        _b.trys.push([0, 10, , 11]);
+                        _a.trys.push([0, 6, , 7]);
                         return [4 /*yield*/, this.repository.listProjects()];
                     case 1:
-                        projects = _b.sent();
+                        projects = _a.sent();
                         data = [];
+                        _loop_1 = function (project) {
+                            var achievements, projectImages, _b, achievements_1, achievement, images;
+                            return __generator(this, function (_c) {
+                                switch (_c.label) {
+                                    case 0: return [4 /*yield*/, this_1.repository.listAchievementsByProjectID(project.ID)];
+                                    case 1:
+                                        achievements = _c.sent();
+                                        projectImages = [];
+                                        _b = 0, achievements_1 = achievements;
+                                        _c.label = 2;
+                                    case 2:
+                                        if (!(_b < achievements_1.length)) return [3 /*break*/, 5];
+                                        achievement = achievements_1[_b];
+                                        return [4 /*yield*/, this_1.repository.listAchievementImagesByAchievementID(achievement.ID)];
+                                    case 3:
+                                        images = _c.sent();
+                                        images.forEach(function (el) { return projectImages.push(el); });
+                                        _c.label = 4;
+                                    case 4:
+                                        _b++;
+                                        return [3 /*break*/, 2];
+                                    case 5:
+                                        data.push(new project_1.ProjectWithImagesEntity(project.ID, project.title, project.location, project.donation, projectImages));
+                                        return [2 /*return*/];
+                                }
+                            });
+                        };
+                        this_1 = this;
                         _i = 0, projects_1 = projects;
-                        _b.label = 2;
+                        _a.label = 2;
                     case 2:
-                        if (!(_i < projects_1.length)) return [3 /*break*/, 9];
+                        if (!(_i < projects_1.length)) return [3 /*break*/, 5];
                         project = projects_1[_i];
-                        return [4 /*yield*/, this.repository.listAchievementsByProjectID(project.ID)];
+                        return [5 /*yield**/, _loop_1(project)];
                     case 3:
-                        achievements = _b.sent();
-                        achievementResponse = [];
-                        _a = 0, achievements_1 = achievements;
-                        _b.label = 4;
+                        _a.sent();
+                        _a.label = 4;
                     case 4:
-                        if (!(_a < achievements_1.length)) return [3 /*break*/, 7];
-                        achievement = achievements_1[_a];
-                        return [4 /*yield*/, this.repository.listAchievementImagesByAchievementID(achievement.ID)];
-                    case 5:
-                        images = _b.sent();
-                        achievementResponse.push(new achievement_1.AchievementResponseEntity(achievement, images));
-                        _b.label = 6;
-                    case 6:
-                        _a++;
-                        return [3 /*break*/, 4];
-                    case 7:
-                        data.push(new project_1.ProjectResponseEntity(project, achievementResponse));
-                        _b.label = 8;
-                    case 8:
                         _i++;
                         return [3 /*break*/, 2];
-                    case 9: return [2 /*return*/, new project_2.ListProjectsUseCaseResponse(data, null)];
-                    case 10:
-                        error_2 = _b.sent();
+                    case 5: return [2 /*return*/, new project_2.ListProjectsUseCaseResponse(data, null)];
+                    case 6:
+                        error_2 = _a.sent();
                         console.log(error_1.TAG_INTERNAL_SERVER_ERROR, error_2.message);
                         return [2 /*return*/, new project_2.ListProjectsUseCaseResponse(null, new error_1.InternalServerError(error_2.message))];
-                    case 11: return [2 /*return*/];
+                    case 7: return [2 /*return*/];
                 }
             });
         });
@@ -97,3 +108,58 @@ var ListProjectsUseCase = /** @class */ (function () {
     return ListProjectsUseCase;
 }());
 exports.ListProjectsUseCase = ListProjectsUseCase;
+var GetProjectUseCase = /** @class */ (function () {
+    function GetProjectUseCase(validate, repository) {
+        this.validate = validate;
+        this.repository = repository;
+    }
+    GetProjectUseCase.prototype.getProject = function (req) {
+        return __awaiter(this, void 0, void 0, function () {
+            var errorMessage, project, achievements, projectImages_1, _i, achievements_2, achievement, images, data, error_3;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 10, , 11]);
+                        return [4 /*yield*/, this.validate.getProject(req.ID)];
+                    case 1:
+                        errorMessage = _a.sent();
+                        if (!!errorMessage) return [3 /*break*/, 8];
+                        return [4 /*yield*/, this.repository.getProject(req.ID)];
+                    case 2:
+                        project = _a.sent();
+                        return [4 /*yield*/, this.repository.listAchievementsByProjectID(project.ID)];
+                    case 3:
+                        achievements = _a.sent();
+                        projectImages_1 = [];
+                        _i = 0, achievements_2 = achievements;
+                        _a.label = 4;
+                    case 4:
+                        if (!(_i < achievements_2.length)) return [3 /*break*/, 7];
+                        achievement = achievements_2[_i];
+                        return [4 /*yield*/, this.repository.listAchievementImagesByAchievementID(achievement.ID)];
+                    case 5:
+                        images = _a.sent();
+                        images.forEach(function (el) { return projectImages_1.push(el); });
+                        _a.label = 6;
+                    case 6:
+                        _i++;
+                        return [3 /*break*/, 4];
+                    case 7:
+                        data = new project_1.ProjectWithImagesEntity(project.ID, project.title, project.location, project.donation, projectImages_1);
+                        return [2 /*return*/, new project_2.GetProjectUseCaseResponse(data, null)];
+                    case 8:
+                        console.log(error_1.TAG_PRE_CONDITION_ERROR, errorMessage);
+                        return [2 /*return*/, new project_2.GetProjectUseCaseResponse(null, new error_1.PreconditionError(errorMessage))];
+                    case 9: return [3 /*break*/, 11];
+                    case 10:
+                        error_3 = _a.sent();
+                        console.log(error_1.TAG_INTERNAL_SERVER_ERROR, error_3.message);
+                        return [2 /*return*/, new project_2.GetProjectUseCaseResponse(null, new error_1.InternalServerError(error_3.message))];
+                    case 11: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    return GetProjectUseCase;
+}());
+exports.GetProjectUseCase = GetProjectUseCase;

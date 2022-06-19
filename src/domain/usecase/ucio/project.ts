@@ -1,16 +1,36 @@
 import { ErrorEntity } from "../../entity/error"
-import { ProjectResponseEntity } from "../../entity/project"
+import { ProjectWithImagesEntity } from "../../entity/project"
 
 class ListProjectsUseCaseResponse {
-    public projects: ProjectResponseEntity[] | null
+    public projects: ProjectWithImagesEntity[] | null
     public error: ErrorEntity | null
 
-    constructor(projects: ProjectResponseEntity[] | null, error: ErrorEntity | null) {
+    constructor(projects: ProjectWithImagesEntity[] | null, error: ErrorEntity | null) {
         this.projects = projects
         this.error = error
     }
 }
 
+class GetProjectUseCaseRequest {
+    public ID: number
+
+    constructor(ID: number) {
+        this.ID = ID
+    }
+}
+
+class GetProjectUseCaseResponse {
+    public project: ProjectWithImagesEntity | null
+    public error: ErrorEntity | null
+
+    constructor(project: ProjectWithImagesEntity | null, error: ErrorEntity | null) {
+        this.project = project
+        this.error = error
+    }
+}
+
 export {
-    ListProjectsUseCaseResponse
+    ListProjectsUseCaseResponse,
+    GetProjectUseCaseRequest,
+    GetProjectUseCaseResponse
 }

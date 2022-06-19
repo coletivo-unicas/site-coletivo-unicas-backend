@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ListProjectsUseCaseRepository = void 0;
+exports.ListProjectsUseCaseRepository = exports.GetProjectUseCaseRepository = void 0;
 var achievement_1 = require("../../internal/database/postgresql/achievement");
 var achievement_image_1 = require("../../internal/database/postgresql/achievement_image");
 var project_1 = require("../../internal/database/postgresql/project");
@@ -76,3 +76,39 @@ var ListProjectsUseCaseRepository = /** @class */ (function () {
     return ListProjectsUseCaseRepository;
 }());
 exports.ListProjectsUseCaseRepository = ListProjectsUseCaseRepository;
+var GetProjectUseCaseRepository = /** @class */ (function () {
+    function GetProjectUseCaseRepository() {
+    }
+    GetProjectUseCaseRepository.prototype.getProject = function (ID) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, (0, project_1.getProject)(ID)];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
+    GetProjectUseCaseRepository.prototype.listAchievementsByProjectID = function (projectID) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, (0, achievement_1.listAchievementsByProjectID)(projectID)];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
+    GetProjectUseCaseRepository.prototype.listAchievementImagesByAchievementID = function (achievementID) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, (0, achievement_image_1.listAchievementImagesByAchievementID)(achievementID)];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
+    return GetProjectUseCaseRepository;
+}());
+exports.GetProjectUseCaseRepository = GetProjectUseCaseRepository;

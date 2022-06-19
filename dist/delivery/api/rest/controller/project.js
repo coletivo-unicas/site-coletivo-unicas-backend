@@ -36,9 +36,11 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ListProjectsController = void 0;
+exports.GetProjectController = exports.ListProjectsController = void 0;
 var project_1 = require("../../../../domain/usecase/project");
-var project_2 = require("../../../../infrastructure/provider/repository/project");
+var project_2 = require("../../../../domain/usecase/ucio/project");
+var project_3 = require("../../../../infrastructure/provider/repository/project");
+var project_4 = require("../../../../infrastructure/provider/validate/project");
 var response_1 = require("../response/response");
 var ListProjectsController = /** @class */ (function () {
     function ListProjectsController() {
@@ -49,7 +51,7 @@ var ListProjectsController = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        repository = new project_2.ListProjectsUseCaseRepository();
+                        repository = new project_3.ListProjectsUseCaseRepository();
                         usecase = new project_1.ListProjectsUseCase(repository);
                         return [4 /*yield*/, usecase.listProjects()];
                     case 1:
@@ -68,3 +70,34 @@ var ListProjectsController = /** @class */ (function () {
     return ListProjectsController;
 }());
 exports.ListProjectsController = ListProjectsController;
+var GetProjectController = /** @class */ (function () {
+    function GetProjectController() {
+    }
+    GetProjectController.prototype.getProject = function (req, res) {
+        return __awaiter(this, void 0, void 0, function () {
+            var ID, ucReq, validate, repository, usecase, ucRes;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        ID = parseInt(req.params.ID, 10);
+                        ucReq = new project_2.GetProjectUseCaseRequest(ID);
+                        validate = new project_4.GetProjectUseCaseValidate();
+                        repository = new project_3.GetProjectUseCaseRepository();
+                        usecase = new project_1.GetProjectUseCase(validate, repository);
+                        return [4 /*yield*/, usecase.getProject(ucReq)];
+                    case 1:
+                        ucRes = _a.sent();
+                        if (ucRes.error) {
+                            new response_1.InternalServerErrorResponse().internalServerError(res, ucRes.error);
+                        }
+                        else {
+                            new response_1.SuccessResponse().success(res, ucRes.project);
+                        }
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    return GetProjectController;
+}());
+exports.GetProjectController = GetProjectController;
