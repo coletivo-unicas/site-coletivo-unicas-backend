@@ -19,13 +19,15 @@ class ProjectWithImagesEntity {
     public title: string
     public location: string
     public donation: string
+    public description: string
     public images: AchievementImageEntity[]
 
-    constructor(ID: number, title: string, location: string, donation: string, images: AchievementImageEntity[]) {
+    constructor(ID: number, title: string, location: string, donation: string, description: string, images: AchievementImageEntity[]) {
         this.ID = ID
         this.title = title
         this.location = location
         this.donation = donation
+        this.description = description
         this.images = images
     }
 }

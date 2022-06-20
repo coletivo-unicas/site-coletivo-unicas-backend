@@ -12,11 +12,12 @@ var ProjectEntity = /** @class */ (function () {
 }());
 exports.ProjectEntity = ProjectEntity;
 var ProjectWithImagesEntity = /** @class */ (function () {
-    function ProjectWithImagesEntity(ID, title, location, donation, images) {
+    function ProjectWithImagesEntity(ID, title, location, donation, description, images) {
         this.ID = ID;
         this.title = title;
         this.location = location;
         this.donation = donation;
+        this.description = description;
         this.images = images;
     }
     return ProjectWithImagesEntity;

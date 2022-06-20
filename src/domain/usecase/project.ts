@@ -26,7 +26,7 @@ class ListProjectsUseCase {
                     images.forEach(el => projectImages.push(el))
                 }
 
-                data.push(new ProjectWithImagesEntity(project.ID, project.title, project.location, project.donation, projectImages))
+                data.push(new ProjectWithImagesEntity(project.ID, project.title, project.location, project.donation, achievements[0].description, projectImages))
             }
 
             return new ListProjectsUseCaseResponse(data, null)
@@ -62,7 +62,7 @@ class GetProjectUseCase {
                     images.forEach(el => projectImages.push(el))
                 }
 
-                const data = new ProjectWithImagesEntity(project.ID, project.title, project.location, project.donation, projectImages)
+                const data = new ProjectWithImagesEntity(project.ID, project.title, project.location, project.donation, achievements[0].description, projectImages)
 
                 return new GetProjectUseCaseResponse(data, null)
             } else {

@@ -72,7 +72,7 @@ function listAchievementsByProjectID(projectID) {
         var response;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, achievement_1.achievementModelSequelize.findAll({ where: { projectID: projectID }, raw: true })];
+                case 0: return [4 /*yield*/, achievement_1.achievementModelSequelize.findAll({ where: { projectID: projectID }, raw: true, order: [['ID', 'ASC']] })];
                 case 1:
                     response = _a.sent();
                     return [2 /*return*/, response.map(function (el) { return (0, achievement_2.toAchievementEntity)(el); })];

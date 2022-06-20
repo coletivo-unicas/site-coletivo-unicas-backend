@@ -77,7 +77,7 @@ var ListProjectsUseCase = /** @class */ (function () {
                                         _b++;
                                         return [3 /*break*/, 2];
                                     case 5:
-                                        data.push(new project_1.ProjectWithImagesEntity(project.ID, project.title, project.location, project.donation, projectImages));
+                                        data.push(new project_1.ProjectWithImagesEntity(project.ID, project.title, project.location, project.donation, achievements[0].description, projectImages));
                                         return [2 /*return*/];
                                 }
                             });
@@ -145,7 +145,7 @@ var GetProjectUseCase = /** @class */ (function () {
                         _i++;
                         return [3 /*break*/, 4];
                     case 7:
-                        data = new project_1.ProjectWithImagesEntity(project.ID, project.title, project.location, project.donation, projectImages_1);
+                        data = new project_1.ProjectWithImagesEntity(project.ID, project.title, project.location, project.donation, achievements[0].description, projectImages_1);
                         return [2 /*return*/, new project_2.GetProjectUseCaseResponse(data, null)];
                     case 8:
                         console.log(error_1.TAG_PRE_CONDITION_ERROR, errorMessage);
